@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 import connectDb from "@/lib/ConnectDb";
 
 
-export async function GET(_request: Request, { params }: { params: { id: string } }) {
+export async function GET(_request: Request, context: { params: Promise<{ id: string }> }) {
   try {
     await connectDb();
 
-    const { id } = params;
+    const { id } = await context.params;
 
     const blog = await BlogModel.findById(id);
 
