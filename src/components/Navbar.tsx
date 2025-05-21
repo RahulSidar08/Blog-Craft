@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [tokenData , setTokenData] = useState(null)
+const [tokenData, setTokenData] = useState<string | null>(null);
   useEffect(() => {
-    const token : any = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
     console.log("cookie data", token)
     setTokenData(token)
 
