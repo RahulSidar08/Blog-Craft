@@ -32,7 +32,7 @@ export default function Page() {
       }
 
       try {
-        const res = await axios.get(`http://localhost:3000/api/blog/${blogId}`);
+        const res = await axios.get(`/api/blog/${blogId}`);
         // Reset form only with the blog object, NOT the whole response
         reset(res.data.blog);
         setError(null);
@@ -64,7 +64,7 @@ export default function Page() {
     console.log("data to update", updates);
 
     try {
-      await axios.patch(`http://localhost:3000/api/blog/${blogId}`, updates);
+      await axios.patch(`/api/blog/${blogId}`, updates);
       toast.success("Blog updated!");
       router.push("/dashboard");
     } catch (err) {

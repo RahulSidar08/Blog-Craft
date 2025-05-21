@@ -22,7 +22,7 @@ export default function Page() {
     try {
       console.log("Submitting signup data:", data);
 
-      const response = await axios.post("http://localhost:3000/api/blog/publish", data, { withCredentials: true });
+      const response = await axios.post("/api/blog/publish", data, { withCredentials: true });
 
       if (response.status === 201 || response.status === 200) {
         toast.success("Blog Published successful!");

@@ -23,7 +23,7 @@ export default function LoginForm() {
         try {
             console.log("Submitting Login data:", data);
 
-            const response = await axios.post("http://localhost:3000/api/auth/login", data);
+            const response = await axios.post("/api/auth/login", data);
 
             if (response.status === 201 || response.status === 200) {
                 toast.success("Login successful!");

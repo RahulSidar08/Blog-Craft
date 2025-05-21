@@ -23,7 +23,7 @@ export default function SignupForm() {
     try {
       console.log("Submitting signup data:", data);
 
-      const response = await axios.post("http://localhost:3000/api/auth/signup", data);
+      const response = await axios.post("/api/auth/signup", data);
 
       if (response.status === 201 || response.status === 200) {
         toast.success("Signup successful!");
