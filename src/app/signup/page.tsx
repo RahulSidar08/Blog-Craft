@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 type Inputs = {
@@ -37,12 +37,13 @@ export default function SignupForm() {
         console.warn("Unexpected response:", response);
       }
 
-    } catch (error: any) {
-      console.error("Signup error:", error);
-
-      // Extract error message from response if available
-      const message = error?.response?.data?.message || "An error occurred during signup.";
-      toast.error(message);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message = error.response?.data?.message || "An error occurred during login.";
+        toast.error(message);
+      } else {
+        toast.error("An unexpected error occurred.");
+      }
     }
   };
 

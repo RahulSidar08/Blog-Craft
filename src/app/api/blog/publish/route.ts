@@ -44,7 +44,7 @@ const token = cookieStore.get("token")?.value;
       decoded = jwt.verify(token, process.env.JWT_SECRET!);
     } catch (err) {
       return NextResponse.json(
-        { success: false, message: "Unauthorized: Invalid token" },
+        { success: false, message: "Unauthorized: Invalid token" , error : err},
         { status: 401 }
       );
     }
@@ -71,9 +71,8 @@ const token = cookieStore.get("token")?.value;
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error creating blog:", error);
     return NextResponse.json(
-      { success: false, message: "Internal Server Error" },
+      { success: false, message: "Internal Server Error", error },
       { status: 500 }
     );
   }

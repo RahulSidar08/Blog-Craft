@@ -1,19 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams} from "next/navigation";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
-
+interface Blog {
+  _id: string;
+  title: string;
+  content?: string;
+  status: 'draft' | 'published';
+  tag?: string;
+  updatedAt: string;
+}
 export default function Page() {
-    const router = useRouter();
     const params = useParams();
     const blogId = params.id;
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [blogData, setBlogData] = useState<any | null>(null);
+    const [blogData, setBlogData] = useState<Blog | null>(null);
 
     useEffect(() => {
         async function fetchBlog() {

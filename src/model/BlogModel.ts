@@ -1,5 +1,4 @@
 import mongoose, { Schema, model, Document, Model } from "mongoose";
-import UserModel from "./UserModel";
 
 interface IBlog extends Document {
     title: string;

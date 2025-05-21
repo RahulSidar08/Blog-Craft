@@ -63,7 +63,7 @@ export default function BlogListPage() {
               </div>
               <div className="mt-4">
                 <Link
-                  href={`/edit/${blog._id}`}
+                  href={`/blog/${blog._id}`}
                   className="text-sm text-blue-500 hover:underline"
                 >
                   Read more →

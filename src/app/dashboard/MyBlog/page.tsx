@@ -13,7 +13,7 @@ interface Blog {
   updatedAt: string;
 }
 
-export default function page() {
+export default function Page() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [filter, setFilter] = useState<'all' | 'draft' | 'published'>('all');
 

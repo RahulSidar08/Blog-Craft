@@ -18,7 +18,6 @@ export default function Page() {
     formState: { errors },
   } = useForm<BlogInputs>();
   const router = useRouter()
-  const [message, setMessage] = useState("");
 
   const onSubmit: SubmitHandler<BlogInputs> = async (data) => {
     try {
@@ -38,12 +37,13 @@ export default function Page() {
         console.warn("Unexpected response:", response);
       }
 
-    } catch (error: any) {
-      console.error("error:", error);
-
-      // Extract error message from response if available
-      const message = error?.response?.data?.message || "An error occurred during publish.";
-      toast.error(message);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message = error.response?.data?.message || "An error occurred during login.";
+        toast.error(message);
+      } else {
+        toast.error("An unexpected error occurred.");
+      }
     }
   };
 
@@ -54,7 +54,6 @@ export default function Page() {
         <div className="w-full max-w-2xl space-y-4">
           <h1 className="text-3xl font-bold text-center">Create a New Blog</h1>
 
-          {message && <p className="text-center text-green-600">{message}</p>}
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Title */}

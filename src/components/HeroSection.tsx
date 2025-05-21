@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HeroSection() {
 
   return (
-    <section className="bg-[#0a0a0a] py-24 px-6 min-h-screen-[400px] w-full">
+    <section className="bg-[#0a0a0a] py-24 px-6 w-full">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
           Welcome to <span className="text-blue-500">BlogCraft</span>
