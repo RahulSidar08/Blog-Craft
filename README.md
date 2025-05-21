@@ -32,7 +32,7 @@ Blog Craft is a full-stack blogging platform that enables users to create, edit,
 Clone the repo:
 
 ```bash
-git clone https://github.com/RahulSidar08/InsightAI-Times.git
+git clone https://github.com/RahulSidar08/Blog-Craft.git
   
 ```
 
