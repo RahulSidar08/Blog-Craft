@@ -2,16 +2,15 @@ import BlogModel from "@/model/BlogModel";
 import { NextResponse } from "next/server";
 import connectDb from "@/lib/ConnectDb";
 
+// Correct type for params in App Router route handlers
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
     await connectDb();
 
-    const { id } = params;
-
-    const blog = await BlogModel.findById(id);
+    const blog = await BlogModel.findById(params.id);
 
     if (!blog) {
       return NextResponse.json(
@@ -32,6 +31,7 @@ export async function GET(
     );
   }
 }
+
 
 
 
